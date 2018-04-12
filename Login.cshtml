@@ -1,0 +1,47 @@
+﻿@model WebApplication2.ViewModels.Authentication.LoginVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+
+    <div>
+        <p> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</p>
+        <p>
+            @Html.ValidationMessage("CredentialError")
+        </p>
+        @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <th style="text-align: right">@Html.DisplayNameFor(m => m.username)</th>
+                <td>@Html.EditorFor(m => Model.username)</td>
+
+            </tr>
+
+            <tr>
+                <th style="text-align: right">@Html.DisplayNameFor(m => m.password)</th>
+                <td>@Html.EditorFor(m => Model.password)</td>
+
+            </tr>
+        </table>
+        <input type="submit" value="Zatwierdź" />
+}
+    </div>
+    <br /><br />
+    <span style="background-color:aqua; padding:5px; color:whitesmoke;border:5px solid black;">
+        @Html.ActionLink("Stwórz nowego użytkownika", "NewUser");
+    </span>
+    <br /><br /><br />
+    <span style="background-color:aqua; padding:5px; color:whitesmoke;border:5px solid black;">
+        @Html.ActionLink("Back to List", "Index", "Users");
+    </span>
+</body>
+</html>

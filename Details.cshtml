@@ -1,0 +1,57 @@
+﻿@model WebApplication2.ViewModels.User.DetailsVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body style=" margin-top:100px;margin-left:300px;font-size:20px">
+    <div style="text-align: right">
+        Użytkownik: @Model.username | @Html.ActionLink("Wyloguj", "Logout", "Authentication")
+    </div>
+    <table cellpadding="5" border="1" style="border-color:aqua">
+        <caption style="background-color:aqua; font-weight:bold">Szczegóły</caption>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.firstName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.user.firstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.lastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.user.lastName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.age)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.user.age)
+            </td>
+        </tr>
+
+
+    </table>
+    
+
+    <br /><br />
+    <span style="background-color:aqua; padding:20px; color:whitesmoke;border:5px solid black;">
+        @Html.ActionLink("Back to List", "Index")
+    </span>
+</body>
+</html>

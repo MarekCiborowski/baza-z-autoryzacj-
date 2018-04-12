@@ -1,0 +1,70 @@
+﻿@model WebApplication2.ViewModels.User.IndexVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body style=" margin-top:100px;margin-left:300px;font-size:20px">
+    <div style="text-align: right">
+        Użytkownik: @Model.username | @Html.ActionLink("Wyloguj", "Logout", "Authentication")
+    </div>
+
+    <span style="background-color:aqua; padding:20px; color:whitesmoke;border:5px solid black;">
+        @Html.ActionLink("DODAJ", "Create")
+    </span>
+    <div style="clear:both"></div>
+    <br />
+    <br />
+    <div>
+        <table cellpadding="5" border="1" style="border-color:aqua">
+            <caption style="background-color:aqua; font-weight:bold">Lista użytkowników</caption>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.userID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.firstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.age)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.userList)
+            {
+                <tr style="background-color:@item.colorAge">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.userID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.age)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.userID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.userID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.userID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

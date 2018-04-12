@@ -1,0 +1,68 @@
+﻿@model WebApplication2.ViewModels.User.DeleteVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body style=" margin-top:100px;margin-left:300px;font-size:20px">
+    <div style="text-align: right">
+        Użytkownik: @Model.username | @Html.ActionLink("Wyloguj", "Logout", "Authentication")
+    </div>
+    <h3 style="color:red">Czy na pewno chcesz to usunąć?</h3>
+    <table cellpadding="5" border="1" style="border-color:aqua">
+        <caption style="background-color:aqua; font-weight:bold">Usuń</caption>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.user.firstName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.user.firstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.user.lastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.user.lastName)
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                @Html.DisplayNameFor(model => model.user.age)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.user.age)
+            </td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+
+        </div>
+
+    }
+    <br /><br />
+    <span style="background-color:aqua; padding:20px; color:whitesmoke;border:5px solid black;">
+        @Html.ActionLink("Back to List", "Index")
+    </span>
+
+</body>
+</html>
